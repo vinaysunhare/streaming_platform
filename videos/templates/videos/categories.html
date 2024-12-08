@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bollywood - Category Page</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #e50914;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        header .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            background-color: #141414;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #e50914;
+            color: #000000;
+        }
+        main {
+            padding: 40px 20px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            margin: 20px;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .content-section h2, .content-section h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 5px;
+        }
+        .content-section p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .movie-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            filter: brightness(90%);
+        }
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+            filter: brightness(100%);
+        }
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover img {
+            opacity: 0.7;
+        }
+        .movie-card .title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover .title {
+            opacity: 1;
+        }
+        .movie-card .title h4 {
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+        }
+        footer {
+            background-color: #141414;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.7);
+        }
+        footer a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .content-section {
+                padding: 20px;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Sunhare Movies ERA</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="trending.html">Trending</a></li>
+                <li><a href="bollywood.html">Bollywood</a></li>
+                <li><a href="hollywood.html">Hollywood</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="content-section">
+            <h2>Movie Categories</h2>
+            <p>
+                Discover movies sorted into different categories. From action-packed blockbusters to heartfelt dramas, find the perfect movie to watch.
+            </p>
+            <h3>Action Movies</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://tv.assets.pressassociation.io/08b021a3-0a03-5890-9181-3e38602bf923.jpg" alt="Commando 3">
+                    <div class="title">
+                        <h4>Commando 3</h4>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/0LqIj8h7kL0/maxresdefault.jpg" alt="Gladiator 2">
+                    <div class="title">
+                        <h4>Gladiator 2</h4>
+                    </div>
+                </div>
+            </div>
+            <h3>Drama Movies</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/NG_DwwlV7hk/maxresdefault.jpg" alt="Drama Movie 1">
+                    <div class="title">
+                        <h4>Drama Movie 1</h4>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/mfeJazteOIM/hq720.jpg" alt="Drama Movie 2">
+                    <div class="title">
+                        <h4>Drama Movie 2</h4>
+                    </div>
+                </div>
+            </div>
+            <h3>Comedy Movies</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/TmxYlA26Jr4/maxresdefault.jpg" alt="Comedy Movie 1">
+                    <div class="title">
+                        <h4>Comedy Movie 1</h4>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/rFP5XQg5l7w/maxresdefault.jpg" alt="Comedy Movie 2">
+                    <div class="title">
+                        <h4>Comedy Movie 2</h4>
+                    </div>
+                </div>
+            </div>
+            <h3>Thriller Movies</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/xYm4KJ2UCAg/maxresdefault.jpg" alt="Thriller Movie 1">
+                    <div class="title">
+                        <h4>Thriller Movie 1</h4>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/thHq52Vvuho/hq720.jpg" alt="Thriller Movie 2">
+                    <div class="title">
+                        <h4>Thriller Movie 2</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sunhare Movies ERA. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

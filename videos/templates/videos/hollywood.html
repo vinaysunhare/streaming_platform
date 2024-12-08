@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hollywood - Sunhare Movies ERA</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #e50914;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        header .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            background-color: #141414;
+            padding: 10px 20px;
+            border: 2px solid #e50914; /* Border to match Bollywood navigation */
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #e50914;
+            color: #000000;
+        }
+        main {
+            padding: 40px 20px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            margin: 20px;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .content-section h2, .content-section h3 {
+            color: #ffffff;
+            margin-bottom: 18px;
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 5px;
+        }
+        .content-section p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .movie-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            filter: brightness(90%);
+        }
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+            filter: brightness(100%);
+        }
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover img {
+            opacity: 0.7;
+        }
+        .movie-card .title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover .title {
+            opacity: 1;
+        }
+        .movie-card .title h4 {
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+        }
+        .slider {
+            margin: 40px 0;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+        .slider-container {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .slide {
+            min-width: 250px;
+            margin-right: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+        .slide h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .slide img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .control {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            font-size: 20px;
+        }
+        .control:hover {
+            background-color: #e50914;
+        }
+        footer {
+            background-color: #141414;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.7);
+        }
+        footer a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .content-section {
+                padding: 20px;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .slider-container {
+                flex-direction: column;
+            }
+            .slide img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Sunhare Movies ERA</div>
+        <nav>
+            <ul>
+                <li><a href="home.html">Home</a></li>
+                <li><a href="trending.html">Trending</a></li>
+                <li><a href="bollywood.html">Bollywood</a></li>
+                <li><a href="hollywood.html">Hollywood</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="content-section">
+            <h2>Hollywood Movies</h2>
+            <p>
+                Dive into the world of Hollywood with blockbuster hits, critically acclaimed films, and timeless classics. Discover your next favorite movie!
+            </p>
+            <h3>Top Hollywood Picks</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/qkgkUCqEum4/maxresdefault.jpg" alt="Moana 2">
+                    <div class="title">
+                        <h4>Moana 2</h4>
+                    </div>
+                </div>
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/5omDWGdDmJ8/hq720.jpg" alt="Wicked (2024)">
+                    <div class="title">
+                        <h4>Wicked (2024)</h4>
+                    </div>
+                </div>
+                <!-- Add more movie cards as needed -->
+            </div>
+        </div>
+        <h3>New Releases</h3>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/mufasa-the-lion-king-et00396541-1714459075.jpg" alt="Mufasa: The Lion King">
+                    <h4>Mufasa: The Lion King</h4>
+                </div>
+                <div class="slide">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/kraven-the-hunter-et00362457-1723636376.jpg" alt="Kraven The Hunter">
+                    <h4>Kraven The Hunter</h4>
+                </div>
+                <div class="slide">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/sonic-the-hedgehog-3-et00399670-1732540817.jpg" alt="Sonic the Hedgehog 3">
+                    <h4>Sonic the Hedgehog 3</h4>
+                </div>
+                <div class="slide">
+                    <img src="https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/the-lord-of-the-rings-the-war-of-the-rohirrim-et00409188-1733312475.jpg" alt="The Lord of the Rings: The War of the Rohirrim">
+                    <h4>The Lord of the Rings: The War of the Rohirrim</h4>
+                </div>
+                <!-- Add more slides as needed -->
+            </div>
+            <div class="slider-controls">
+                <button class="control" onclick="prevSlide()">&#10094;</button>
+                <button class="control" onclick="nextSlide()">&#10095;</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sunhare Movies ERA. All rights reserved. | <a href="contact.html">Contact</a></p>
+    </footer>
+    <script>
+        let slideIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(index) {
+            if (index >= totalSlides) slideIndex = 0;
+            else if (index < 0) slideIndex = totalSlides - 1;
+            else slideIndex = index;
+            document.querySelector('.slider-container').style.transform = `translateX(-${slideIndex * 270}px)`;
+        }
+
+        function nextSlide() {
+            showSlide(slideIndex + 1);
+        }
+
+        function prevSlide() {
+            showSlide(slideIndex - 1);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Sunhare Movie ERA</title>
+    <style>
+        /* Global Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #1a1a1a;
+            color: #ffffff;
+            line-height: 1.6;
+        }
+        header {
+            background-color: #e50914;
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            justify-content: space-between;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+        }
+        header .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        nav {
+            background-color: #141414;
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        nav ul li a:hover {
+            background-color: #e50914;
+            color: #000000;
+        }
+        main {
+            padding: 40px 20px;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            margin: 20px;
+        }
+        .content-section {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: left;
+        }
+        .content-section h2, .content-section h3 {
+            color: #ffffff;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e50914;
+            padding-bottom: 5px;
+        }
+        .content-section p {
+            font-size: 18px;
+            color: #ffffff;
+            margin-bottom: 20px;
+        }
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px 0;
+        }
+        .movie-card {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s, box-shadow 0.3s, filter 0.3s;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+            filter: brightness(90%);
+        }
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.8);
+            filter: brightness(100%);
+        }
+        .movie-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover img {
+            opacity: 0.7;
+        }
+        .movie-card .title {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .movie-card:hover .title {
+            opacity: 1;
+        }
+        .movie-card .title h4 {
+            color: #ffffff;
+            font-size: 20px;
+            text-align: center;
+        }
+        .slider {
+            margin: 40px 0;
+            overflow: hidden;
+            position: relative;
+            border-radius: 10px;
+        }
+        .slider-container {
+            display: flex;
+            transition: transform 0.3s ease-in-out;
+        }
+        .slide {
+            min-width: 250px;
+            margin-right: 20px;
+            background-color: #222;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
+            position: relative;
+        }
+        .slide h4 {
+            color: #ffffff;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .slide img {
+            width: 100%;
+            height: 200px;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+        .slider-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        .control {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            padding: 10px;
+            color: #ffffff;
+            cursor: pointer;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+            font-size: 20px;
+        }
+        .control:hover {
+            background-color: #e50914;
+        }
+        footer {
+            background-color: #141414;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px 0;
+            position: relative;
+            width: 100%;
+            box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.7);
+        }
+        footer a {
+            color: #e50914;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            .content-section {
+                padding: 20px;
+            }
+            .movie-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+            .slider-container {
+                flex-direction: column;
+            }
+            .slide img {
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Sunhare Movies ERA</div>
+        <nav>
+            <ul>
+                <li><a href="/videos/templates/videos/home.html">Home</a></li>
+                <li><a href="/videos/templates/videos/trending.html">Trending</a></li>
+                <li><a href="/videos/templates/videos/bollywood.html">Bollywood</a></li>
+                <li><a href="/videos/templates/videos/hollywood.html">Hollywood</a></li>
+                <li><a href="/videos/templates/videos/categories.html">Categories</a></li>
+                <li><a href="/videos/templates/videos/about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="content-section">
+            <h2>Welcome to Sunhare Movies ERA</h2>
+            <p>
+                Dive into the world of cinema with Sunhare Movies ERA. Explore reviews, top picks, and the latest updates on your favorite movies.
+            </p>
+            <h3>Featured Movies</h3>
+            <div class="movie-grid">
+                <div class="movie-card">
+                    <img src="https://i.ytimg.com/vi/ClndxAV_hVU/maxresdefault.jpg" alt="Pushpa 2: The Rule">
+                    <div class="title">
+                        <h4>Pushpa 2: The Rule</h4>
+                    </div>
+                </div>
+                <div class="movie-grid">
+                    <div class="movie-card">
+                        <img src="https://i.ytimg.com/vi/QT71Zv4EE_Q/maxresdefault.jpg" alt="Bahubali 3">
+                        <div class="title">
+                            <h4>Bahubali 3</h4>
+                        </div>
+                    </div>                
+                <!-- Add more movie cards as needed -->
+            </div>
+        </div>
+        <h3>Trending Now</h3>
+        <div class="slider">
+            <div class="slider-container">
+                <div class="slide">
+                    <img src="https://i.ibb.co/WKRMRhd/luckybhaskar.webp" alt="Lucky Baskhar">
+                    <h4>Lucky Baskhar</h4>
+                </div>
+                <div class="slide">
+                    <img src="https://i.ibb.co/WW3yqsZ/pushpa2.webp" alt="Pushpa 2: The Rule">
+                    <h4>Pushpa 2: The Rule</h4>
+                </div>
+                <div class="slide">
+                    <img src="https://i.ibb.co/mJ0xwYd/Devara-Part-1.jpg" alt="Devara: Part - 1">
+                    <h4>Devara: Part - 1 </h4>
+                </div>
+                <div class="slide">
+                    <img src="https://m.media-amazon.com/images/M/MV5BZjY3MTk3YzQtYjBhMC00N2FkLThiOTMtOWI2NmIxMDFhMDZhXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Martin">
+                    <h4>Martin</h4>
+                </div>    
+                <div class="slider">
+                    <div class="slider-container">
+                        <div class="slide">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMjRiMWI0M2UtM2JlMC00NGI5LTk3YWEtYmI4MTc0ZjBiN2VjXkEyXkFqcGc@._V1_.jpg" alt="Vedaa">
+                            <h4>Vedaa</h4>
+                        </div>
+                        <div class="slide">
+                            <img src="https://m.media-amazon.com/images/M/MV5BYmJiYTQ4NWYtNDFmYS00NjJlLWJhZDItMGY4OWJiMDE0N2UyXkEyXkFqcGc@._V1_.jpg" alt="Ulajh">
+                            <h4>Ulajh</h4>
+                        </div>
+                        <div class="slide">
+                            <img src="https://m.media-amazon.com/images/M/MV5BMGE0YWU1MmEtN2FhMS00NzBlLWE3MTgtMWZkYjdmNDg5ZTFiXkEyXkFqcGc@._V1_.jpg" alt="Sector 36">
+                            <h4>Sector 36</h4>
+                        </div>
+                        <div class="slide">
+                            <img src="https://m.media-amazon.com/images/M/MV5BNzQ4ODQyZDMtYmNjMC00MGJhLWI2YjctYmE2ZmJkY2YxM2Y3XkEyXkFqcGc@._V1_.jpg" alt="Auron Mein Kahan Dum Tha ">
+                            <h4>Auron Mein Kahan Dum Tha</h4>
+                        </div>                              
+                <!-- Add more slides as needed -->
+            </div>
+            <div class="slider-controls">
+                <button class="control">❮</button>
+                <button class="control">❯</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>© 2024 Sunhare Movies ERA. All Rights Reserved. <a href="privacy.html">Privacy Policy</a></p>
+    </footer>
+</body>
+</html>
